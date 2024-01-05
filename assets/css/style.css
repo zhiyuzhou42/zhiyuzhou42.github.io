@@ -262,7 +262,20 @@ body.active { overflow: hidden;}
   letter-spacing: 3.5px;
 }
 
+[data-reveal] {
+  transform: translateY(50px);
+  opacity: 0;
+  transition: var(--transition-3);
+}
 
+[data-reveal="left"] { transform: translate(-50px, 0); }
+
+[data-reveal="right"] { transform: translate(50px, 0); }
+
+[data-reveal].revealed {
+  transform: translate(0, 0);
+  opacity: 1;
+}
 
 
 /*-----------------------------------*\
@@ -1443,5 +1456,8 @@ body.active { overflow: hidden;}
 }
 
 @media print {
-  footer {page-break-after: always;}
+  .pagebreak {
+    clear: both;
+    page-break-after: always;
+}
 }
