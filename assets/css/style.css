@@ -1278,6 +1278,129 @@ body.active { overflow: hidden;}
   height: auto;
 }
 
+/*-----------------------------------*\
+  #Game Design
+\*-----------------------------------*/
+
+.Game .container {
+  display: grid;
+  gap: 45px;
+}
+
+.Game .wrapper,
+.Solar-banner { padding-inline-start: 45px; }
+
+.Game .section-title { 
+  margin-block-end: 15px; 
+  font-size: var(--fs-7);
+}
+
+.Game .section-title-2 { 
+  margin-top: 100px;
+  margin-block-end: 15px; 
+  font-size: var(--fs-8);
+}
+
+.Game .section-text {
+  font-size: var(--fs-10);
+  color: var(--white_a70);
+  font-weight: var(--fw-300);
+  line-height: 1.7;
+  margin-block-end: 35px;
+}
+
+.Game .section-text-2 {
+  font-size: var(--fs-10);
+  color: var(--white_a80);
+  font-weight: var(--fw-300);
+  line-height: 1.7;
+  margin-block-end: 35px;
+}
+
+.Game .wrapper::before {
+  top: 10px;
+  left: 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  display: flex;
+}
+
+.Game .section-text .em {
+  color: var(--white_a80);
+  font-weight: var(--fw-400);
+  
+}
+
+.Game .video {
+  display: block;
+  margin: auto;
+  margin-bottom: 50px;
+  max-width: 100%;
+  height: auto;
+}
+
+.Game .doc-acc {
+  background: #101010;
+  border-radius: 12px;
+  margin: 16px 0;
+  padding: 16px 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.25);
+  transition: background .3s ease;
+}
+.Game .doc-acc:hover { background: #151515; }
+
+.Game .doc-acc > summary {
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f0f0f0;
+  list-style: none;
+  position: relative;
+}
+.Game .doc-acc > summary::marker { display: none; }
+.Game .doc-acc summary::after {
+  content: '＋';
+  position: absolute;
+  right: 0;
+  transition: transform .3s ease;
+}
+.Game .doc-acc[open] summary::after {
+  content: '－';
+  transform: rotate(180deg);
+}
+
+.Game .doc-preview {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.Game .doc-preview iframe {
+  width: 100%;
+  height: 70vh;             
+  border: none;
+  border-radius: 10px;
+  background: #000;
+  box-shadow: 0 4px 20px rgba(0,0,0,.35);
+}
+.Game .doc-open {
+  align-self: flex-end;
+  font-size: .9rem;
+  text-decoration: none;
+  color: #9ecbff;
+  font-weight: 600;
+  margin-right: 12px;
+}
+.Game .doc-open:hover { color: #cfe5ff; }
+
+
+.Game.light .doc-acc       { background:#f6f6f6; box-shadow:0 3px 12px rgba(0,0,0,.1); }
+.Game.light .doc-acc:hover { background:#fff; }
+.Game.light .doc-acc > summary { color:#222; }
+.gamGamee.light .doc-open { color:#3366ff; }
+
 
 
 /*-----------------------------------*\
