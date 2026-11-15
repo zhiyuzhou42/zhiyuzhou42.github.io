@@ -13,7 +13,7 @@ const addEventOnElements = function (elements, eventType, callback){
 
 const loadingElement = document.querySelector("[data-loading]");
 
-window.addEventListener("load", function(){
+window.addEventListener("DOMContentLoaded", function(){
     loadingElement.classList.add("loaded");
     this.document.body.classList.remove("active");
 })
