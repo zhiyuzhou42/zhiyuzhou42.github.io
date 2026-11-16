@@ -692,7 +692,11 @@ body.active { overflow: hidden;}
   gap: 35px 10px;
 }
 
-.category-item { max-width: calc(50% - 5px); }
+.category-item {
+  width: calc(50% - 5px);
+  max-width: 235px;
+  min-width: 0;
+}
 
 .category-card .card-title {
   color: var(--white_a50);
@@ -1616,7 +1620,11 @@ body.active { overflow: hidden;}
   :is(.header, .category, .Fluidity, .Meditation, .Daydreaming,
    .Solar, .BCI, .Game, .about) .container { max-width: unset; }
 
-  .category-item { max-width: 235px;}
+  .category-item {
+    width: calc(50% - 5px);
+    max-width: 235px;
+    min-width: 0;
+    }
 
 
 }
@@ -1638,7 +1646,11 @@ body.active { overflow: hidden;}
   :is(.header, .category, .Fluidity, .Meditation, .Daydreaming,
    .Solar, .BCI, .Game, .about) .container { max-width: unset; }
 
-  .category-item { max-width: 235px;}
+  .category-item {
+    width: calc(50% - 5px);
+    max-width: 235px;
+    min-width: 0;
+  }
 
 
 }
