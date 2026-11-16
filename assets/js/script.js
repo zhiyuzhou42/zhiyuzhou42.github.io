@@ -30,7 +30,11 @@ const finishLoading = function () {
 };
 
 const waitForPreview = function () {
-    const previewImages = document.querySelectorAll("#home img");
+
+    // Homepage previews and header images
+    const previewImages = document.querySelectorAll(
+        ".header img, .category-list .category-card img"
+    );
 
     const imagePromises = Array.from(previewImages).map(img => {
         return new Promise(resolve => {
@@ -43,9 +47,24 @@ const waitForPreview = function () {
         });
     });
 
-    Promise.all([
-        Promise.all(imagePromises),
-        new Promise(resolve => setTimeout(resolve, 3000))
+    // Minimum loading duration: 3 seconds
+    const minimumLoading = new Promise(resolve => {
+        setTimeout(resolve, 3000);
+    });
+
+    // Maximum loading duration: 8 seconds
+    const maximumLoading = new Promise(resolve => {
+        setTimeout(resolve, 8000);
+    });
+
+    // Wait for images, fonts, and minimum duration
+    Promise.race([
+        Promise.all([
+            Promise.all(imagePromises),
+            document.fonts.ready,
+            minimumLoading
+        ]),
+        maximumLoading
     ]).then(finishLoading);
 };
 
@@ -54,9 +73,6 @@ if (document.readyState === "loading") {
 } else {
     waitForPreview();
 }
-
-// Fallback
-setTimeout(finishLoading, 8000);
 
 // Fallback
 setTimeout(finishLoading, 3000);
