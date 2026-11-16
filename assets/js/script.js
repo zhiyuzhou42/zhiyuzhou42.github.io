@@ -29,11 +29,31 @@ const finishLoading = function () {
     }
 };
 
+const waitForPreview = function () {
+    const previewImages = document.querySelectorAll("#home img");
+
+    const imagePromises = Array.from(previewImages).map(img => {
+        return new Promise(resolve => {
+            if (img.complete) {
+                resolve();
+            } else {
+                img.addEventListener("load", resolve, { once: true });
+                img.addEventListener("error", resolve, { once: true });
+            }
+        });
+    });
+
+    Promise.all(imagePromises).then(finishLoading);
+};
+
 if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", finishLoading);
+    document.addEventListener("DOMContentLoaded", waitForPreview);
 } else {
-    finishLoading();
+    waitForPreview();
 }
+
+// Fallback
+setTimeout(finishLoading, 8000);
 
 // Fallback
 setTimeout(finishLoading, 3000);
