@@ -43,7 +43,10 @@ const waitForPreview = function () {
         });
     });
 
-    Promise.all(imagePromises).then(finishLoading);
+    Promise.all([
+        Promise.all(imagePromises),
+        new Promise(resolve => setTimeout(resolve, 3000))
+    ]).then(finishLoading);
 };
 
 if (document.readyState === "loading") {
