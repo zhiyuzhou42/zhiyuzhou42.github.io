@@ -170,7 +170,9 @@ body.active { overflow: hidden;}
   #REUSED STYLE
 \*-----------------------------------*/
 
-.container { padding-inline: 15px;}
+.container {
+  padding-inline: clamp(24px, 4vw, 60px);
+}
 
 .shape { display: none;}
 
@@ -710,6 +712,7 @@ body.active { overflow: hidden;}
 
 .Fluidity .container {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 45px;
 }
 
@@ -852,6 +855,7 @@ body.active { overflow: hidden;}
 
 .Meditation .container {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 45px;
 }
 
@@ -931,6 +935,7 @@ body.active { overflow: hidden;}
 
 .Daydreaming .container {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 45px;
 }
 
@@ -1118,6 +1123,7 @@ body.active { overflow: hidden;}
 
 .Solar .container {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 45px;
 }
 
@@ -1221,11 +1227,12 @@ body.active { overflow: hidden;}
 
 .BCI .container {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 45px;
 }
 
 .BCI .wrapper,
-.Solar-banner { padding-inline-start: 45px; }
+.BCI-banner { padding-inline-start: 45px; }
 
 .BCI .section-title { 
   margin-block-end: 15px; 
@@ -1282,6 +1289,20 @@ body.active { overflow: hidden;}
   margin-bottom: 50px;
   max-width: 100%;
   height: auto;
+}
+
+.BCI .video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.BCI .video-container iframe {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 100%;
 }
 
 .BCI .doc-acc {
@@ -1351,11 +1372,12 @@ body.active { overflow: hidden;}
 
 .Game .container {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 45px;
 }
 
 .Game .wrapper,
-.Solar-banner { padding-inline-start: 45px; }
+.Game-banner { padding-inline-start: 45px; }
 
 .Game .section-title { 
   margin-block-end: 15px; 
@@ -1406,6 +1428,20 @@ body.active { overflow: hidden;}
   margin-bottom: 50px;
   max-width: 100%;
   height: auto;
+}
+
+.Game .video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.Game .video-container iframe {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 100%;
 }
 
 .Game .doc-acc {
@@ -1476,6 +1512,7 @@ body.active { overflow: hidden;}
 
 .about .container {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 45px;
 }
 
@@ -1577,7 +1614,7 @@ body.active { overflow: hidden;}
   }
 
   :is(.header, .category, .Fluidity, .Meditation, .Daydreaming,
-   .Solar, .BCI, .About) .container { max-width: unset; }
+   .Solar, .BCI, .Game, .about) .container { max-width: unset; }
 
   .category-item { max-width: 235px;}
 
@@ -1599,7 +1636,7 @@ body.active { overflow: hidden;}
   }
 
   :is(.header, .category, .Fluidity, .Meditation, .Daydreaming,
-   .Solar, .BCI, .About) .container { max-width: unset; }
+   .Solar, .BCI, .Game, .about) .container { max-width: unset; }
 
   .category-item { max-width: 235px;}
 
@@ -1669,7 +1706,7 @@ body.active { overflow: hidden;}
   .container { max-width: 1320px; }
 
   :is(.header, .category, .Fluidity, .Meditation, .Daydreaming,
-   .Solar, .BCI, .About) .container { max-width: 1580px; }
+   .Solar, .BCI, .Game, .about) .container { max-width: 1580px; }
 
 }
 
@@ -1721,27 +1758,24 @@ body.active { overflow: hidden;}
   }
 }
 
+@media screen and (max-width: 749px) {
+
+  .Fluidity-content,
+  .Meditation-content,
+  .Daydreaming-content,
+  .Solar-content,
+  .BCI-content,
+  .Game-content {
+    min-width: 0;
+  }
+
+}
+
+
+
 img,
 video,
-iframe {
-  max-width: 100%;
-}
-
-.video {
-  width: 100%;
-  height: auto;
-}
-
-.Meditation .video-container iframe,
-.Daydreaming .video-container iframe,
-.Solar .video-container iframe,
-.BCI .video-container iframe,
-.Game .doc-preview iframe {
-  width: 100%;
-  max-width: 100%;
-}
-
+iframe,
 figure {
-  width: 100%;
   max-width: 100%;
 }
