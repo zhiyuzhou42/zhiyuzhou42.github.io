@@ -74,8 +74,8 @@ if (document.readyState === "loading") {
     waitForPreview();
 }
 
-// Fallback
-setTimeout(finishLoading, 3000);
+
+
 
 
 // mobile nav toggle
