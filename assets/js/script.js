@@ -11,12 +11,32 @@ const addEventOnElements = function (elements, eventType, callback){
 
 // preloading
 
-const loadingElement = document.querySelector("[data-loading]");
+/* const loadingElement = document.querySelector("[data-loading]");
 
 window.addEventListener("DOMContentLoaded", function(){
     loadingElement.classList.add("loaded");
     this.document.body.classList.remove("active");
 })
+*/
+// preloading
+
+const loadingElement = document.querySelector("[data-loading]");
+
+const finishLoading = function () {
+    if (loadingElement && !loadingElement.classList.contains("loaded")) {
+        loadingElement.classList.add("loaded");
+        document.body.classList.remove("active");
+    }
+};
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", finishLoading);
+} else {
+    finishLoading();
+}
+
+// Fallback
+setTimeout(finishLoading, 3000);
 
 
 // mobile nav toggle
@@ -131,8 +151,13 @@ const setLetterEffect = function () {
 }
 
 // call the letter effect function after window loaded
-window.addEventListener("load", setLetterEffect);
-
+// window.addEventListener("load", setLetterEffect);
+// initialize the letter effect
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setLetterEffect);
+} else {
+    setLetterEffect();
+}
 
 // scroll reveal
 
